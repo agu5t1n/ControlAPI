@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "ControlAPI.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ControlAPI.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ControlAPI.Entities.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ControlAPI.Entities/1.0.0": {
+      "type": "project",
+      "path": "../ControlAPI.Entities/ControlAPI.Entities.csproj",
+      "msbuildProject": "../ControlAPI.Entities/ControlAPI.Entities.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "ControlAPI.Entities >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\agust\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\agust\\OneDrive\\Escritorio\\ProyectoAPI\\ControlApi\\ControlAPI.Entities\\ControlAPI.Entities.csproj": {
+              "projectPath": "C:\\Users\\agust\\OneDrive\\Escritorio\\ProyectoAPI\\ControlApi\\ControlAPI.Entities\\ControlAPI.Entities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

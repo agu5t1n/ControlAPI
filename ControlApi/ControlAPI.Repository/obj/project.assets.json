@@ -782,6 +782,29 @@
             "rid": "win"
           }
         }
+      },
+      "ControlAPI.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ControlAPI.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ControlAPI.Entities.dll": {}
+        }
+      },
+      "ControlAPI.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ControlAPI.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ControlAPI.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ControlAPI.Interfaces.dll": {}
+        }
       }
     }
   },
@@ -2003,10 +2026,22 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ControlAPI.Entities/1.0.0": {
+      "type": "project",
+      "path": "../ControlAPI.Entities/ControlAPI.Entities.csproj",
+      "msbuildProject": "../ControlAPI.Entities/ControlAPI.Entities.csproj"
+    },
+    "ControlAPI.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../ControlAPI.Interfaces/ControlAPI.Interfaces.csproj",
+      "msbuildProject": "../ControlAPI.Interfaces/ControlAPI.Interfaces.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ControlAPI.Entities >= 1.0.0",
+      "ControlAPI.Interfaces >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.12",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.12",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.12"
@@ -2038,7 +2073,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\agust\\OneDrive\\Escritorio\\ProyectoAPI\\ControlApi\\ControlAPI.Entities\\ControlAPI.Entities.csproj": {
+              "projectPath": "C:\\Users\\agust\\OneDrive\\Escritorio\\ProyectoAPI\\ControlApi\\ControlAPI.Entities\\ControlAPI.Entities.csproj"
+            },
+            "C:\\Users\\agust\\OneDrive\\Escritorio\\ProyectoAPI\\ControlApi\\ControlAPI.Interfaces\\ControlAPI.Interfaces.csproj": {
+              "projectPath": "C:\\Users\\agust\\OneDrive\\Escritorio\\ProyectoAPI\\ControlApi\\ControlAPI.Interfaces\\ControlAPI.Interfaces.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

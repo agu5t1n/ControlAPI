@@ -1,0 +1,12 @@
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\bin\Debug\net6.0\ControlAPI.Entities.deps.json
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\bin\Debug\net6.0\ControlAPI.Entities.dll
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\bin\Debug\net6.0\ControlAPI.Entities.pdb
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\obj\Debug\net6.0\ControlAPI.Entities.csproj.AssemblyReference.cache
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\obj\Debug\net6.0\ControlAPI.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\obj\Debug\net6.0\ControlAPI.Entities.AssemblyInfoInputs.cache
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\obj\Debug\net6.0\ControlAPI.Entities.AssemblyInfo.cs
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\obj\Debug\net6.0\ControlAPI.Entities.csproj.CoreCompileInputs.cache
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\obj\Debug\net6.0\ControlAPI.Entities.dll
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\obj\Debug\net6.0\refint\ControlAPI.Entities.dll
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\obj\Debug\net6.0\ControlAPI.Entities.pdb
+C:\Users\agust\OneDrive\Escritorio\ProyectoAPI\ControlApi\ControlAPI.Entities\obj\Debug\net6.0\ref\ControlAPI.Entities.dll

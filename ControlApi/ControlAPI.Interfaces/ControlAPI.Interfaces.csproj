@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ControlAPI.Entities\ControlAPI.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
