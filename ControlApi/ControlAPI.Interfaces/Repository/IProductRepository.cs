@@ -10,9 +10,13 @@ namespace ControlAPI.Interfaces.Repository
 {
     public interface IProductRepository
     {
-        Product GetProduct(int id);
-        List<Product> FindByID(int id, params Expression<Func<Product, object>>[] includes);
+        Product GetProduct(string name);
+        List<Product> FindByID(string name, params Expression<Func<Product, object>>[] includes);
+        List<Product> GetByCategory(string name, params Expression<Func<Product, object>>[] includes);
+        
         void Save(Product product);
+        void Update(Product product);
+        
 
     }
 }

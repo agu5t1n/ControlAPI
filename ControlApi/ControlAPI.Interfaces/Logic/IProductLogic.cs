@@ -9,8 +9,11 @@ namespace ControlAPI.Interfaces.Logic
 {
     public interface IProductLogic
     {
-        Product GetProduct(int id);
+        Product GetProduct(string name);
+
+        List<Product> GetByCategory(string name);
 
         void Save(Product product);
+        void Update(Product product);
     }
 }

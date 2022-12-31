@@ -13,15 +13,22 @@ namespace ControlAPI.Logic
             _productRepository = productRepository;
         }
 
-        public Product GetProduct(int id)
+        public Product GetProduct(string name)
         {
-            return _productRepository.FindByID(id, t => t.Category)[0];
+            return _productRepository.FindByID(name/*, t => t.Category*/)[0];
         }
-
+        public List<Product> GetByCategory(string name)
+        {
+            return _productRepository.GetByCategory(name);
+        }
+      
 
         public void Save(Product product)
         {
             _productRepository.Save(product);
+        }public void Update(Product product)
+        {
+            _productRepository.Update(product);
         }
     }
 }
