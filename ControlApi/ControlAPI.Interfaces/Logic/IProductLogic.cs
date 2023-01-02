@@ -11,8 +11,9 @@ namespace ControlAPI.Interfaces.Logic
     {
         Product GetProduct(string name);
 
+        int GetStock();
         List<Product> GetByCategory(string name);
-
+        int StockByCategory(string name);
         void Save(Product product);
         void Update(Product product);
     }

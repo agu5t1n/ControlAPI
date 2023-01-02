@@ -19,6 +19,8 @@ namespace ControlAPI.Repository.Data
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Bill> Bill { get; set; }
+        public DbSet<Order> Order { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +28,22 @@ namespace ControlAPI.Repository.Data
                            .HasOne<Category>(p => p.Category)
                            .WithMany(m => m.Product)
                            .HasForeignKey(v => v.IdCategory);
+
+
+            modelBuilder.Entity<Order>()
+                          .HasOne<Bill>(p => p.Bill)
+                          .WithMany(m => m.Order)
+                          .HasForeignKey(v => v.IdBill);
+
+            //modelBuilder.Entity<Order>()
+            //               .HasOne<Bill>(p => p.Bill)
+            //               .WithMany(m => m.Order)
+            //               .HasForeignKey(v => v.NumBill);
+
+            modelBuilder.Entity<Order>()
+                           .HasOne<Product>(p => p.Product)
+                           .WithMany(m => m.Order)
+                           .HasForeignKey(v => v.IdProduct);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

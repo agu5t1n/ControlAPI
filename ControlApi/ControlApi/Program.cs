@@ -21,6 +21,10 @@ builder.Services.AddDbContext<ControlDbContext>(
     });
 builder.Services.AddScoped<IProductLogic, ProductLogic>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IBillLogic, BillLogic>();
+builder.Services.AddTransient<IBillRepository, BillRepository>();
+builder.Services.AddScoped<IOrderLogic, OrderLogic>();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 //builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddAutoMapper(typeof(Program));

@@ -26,10 +26,34 @@ namespace ControlAPI.Repository
         }
         public List<Product> GetByCategory(string name, params Expression<Func<Product, object>>[] includes)
         {
-            var ID = _context.Set<Product>().AsQueryable()
+            var ListCategory = _context.Set<Product>().AsQueryable()
                         .Where(x => x.Category.Type == name)
                         .Include(t => t.Category).ToList();
-            return ID.ToList();
+            
+            return ListCategory.ToList();
+
+        }
+        public int StockByCategory(string name)
+        {
+            var stockCount = 0;
+            var StockCategory = _context.Set<Product>().AsQueryable()
+                        .Where(x => x.Category.Type == name).ToList();
+            foreach (var Stk in StockCategory)
+            {
+                stockCount += Stk.Stock;
+            }
+            return stockCount;
+
+        }
+        public int GetStock()
+        {
+            var stock = _context.Set<Product>().AsQueryable().ToList();
+            var stockCount = 0;
+            foreach (var Stk in stock)
+            {
+                stockCount += Stk.Stock;
+            }
+            return stockCount;
 
         }
 

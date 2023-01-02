@@ -22,8 +22,8 @@ namespace ControlApi.Controllers
             _mapper = mapper;
         }
         [HttpGet()]
-        [Route("ID")]
-        public ActionResult<ProductDTORs> GetId(string name)
+        [Route("GetProduct")]
+        public ActionResult<ProductDTORs> GetProduct(string name)
         {
             var product = _productLogic.GetProduct(name);
             var productDTORs = _mapper.Map<ProductDTORs>(product);
@@ -31,13 +31,31 @@ namespace ControlApi.Controllers
             return productDTORs;
         }
         [HttpGet()]
-        [Route("GetByCategory")]
-        public ActionResult<List<ProductDTORs>> GetByCategory(string name)
+        [Route("ProductByCategory")]
+        public ActionResult<List<ProductDTORs>> ProductByCategory(string name)
         {
             var product = _productLogic.GetByCategory(name);
             var productDTORs = _mapper.Map<List<ProductDTORs>>(product);
 
             return productDTORs;
+        }
+        [HttpGet()]
+        [Route("StockByCategory")]
+        public ActionResult<int> StockByCategory(string name)
+        {
+            var stock = _productLogic.StockByCategory(name);
+
+
+            return stock;
+        }
+        [HttpGet()]
+        [Route("TotalStock")]
+        public ActionResult<int> TotalStock()
+        {
+            var product = _productLogic.GetStock();
+            //var productDTORs = _mapper.Map<List<ProductDTORs>>(product);
+
+            return product;
         }
 
         [HttpPost]
