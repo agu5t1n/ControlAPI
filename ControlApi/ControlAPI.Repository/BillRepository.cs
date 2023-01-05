@@ -66,6 +66,10 @@ namespace ControlAPI.Repository
         {
             var billnew = FindNumBill();
             var datenow = DateTime.Now.ToString("yyyy-MM-dd");
+            if (billnew.NumBill == 0)
+            {
+                billnew.NumBill = 1000;
+            }
             bill.NumBill = billnew.NumBill;
             bill.Date = Convert.ToDateTime(datenow);
             _context.Add(bill);
