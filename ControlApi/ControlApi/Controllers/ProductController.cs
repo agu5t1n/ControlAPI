@@ -53,8 +53,6 @@ namespace ControlApi.Controllers
         public ActionResult<int> TotalStock()
         {
             var product = _productLogic.GetStock();
-            //var productDTORs = _mapper.Map<List<ProductDTORs>>(product);
-
             return product;
         }
 
@@ -66,18 +64,14 @@ namespace ControlApi.Controllers
 
             return Ok(product);
         }
-        [HttpPost]
+        [HttpPut]
         [Route("Update")]
-        public ActionResult Update(int id, ProductDTO productDTO)
+        public ActionResult Update(ProductDTO productDTO)
         {
-            
             var product = _mapper.Map<Product>(productDTO);
-            product.Id = id;
             _productLogic.Update(product);
 
             return Ok(product);
         }
-
-    };
-
+    }
 }

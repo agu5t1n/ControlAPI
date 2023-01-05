@@ -12,7 +12,6 @@ namespace ControlAPI.Entities
         public int NumberClient { get; set; }
         public double Total { get; set; }
         public DateTime Date { get; set; }
-        //public int IdOrder { get; set; }
         public virtual List<Order> Order{ get; set; }
 
     }

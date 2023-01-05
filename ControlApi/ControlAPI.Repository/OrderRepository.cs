@@ -23,15 +23,6 @@ namespace ControlAPI.Repository
             return Order;
 
         }
-        //public List<Product> GetByCategory(string name, params Expression<Func<Product, object>>[] includes)
-        //{
-        //    var ID = _context.Set<Product>().AsQueryable()
-        //                .Where(x => x.Category.Type == name)
-        //                .Include(t => t.Category).ToList();
-        //    return ID.ToList();
-
-        //}
-
         public Order GetOrder(int numbill)
         {
             Order order = _context.Order.Find(numbill);
@@ -47,47 +38,46 @@ namespace ControlAPI.Repository
             _context.Update(order);
             _context.SaveChanges();
         }
+        private Product Updateproduct(Product product)
+        {
+            _context.Update(product);
+            _context.SaveChanges();
+            return product;
+        }
         public bool Delete(int numbill)
         {
             try
             {
+
                 var orderCorrect = _context.Set<Order>().AsQueryable()
-               .Where(_x => _x.NumBill == numbill).ToList();
-                foreach (var orderRemove in orderCorrect)
+                                           .Where(_x => _x.NumBill == numbill).ToList();
+                if (orderCorrect.Count != 0)
                 {
-                    _context.Remove(GetOrder(orderRemove.Id));
+
+                    foreach (var orderRemove in orderCorrect)
+                    {
+                        var product = _context.Set<Product>().AsQueryable()
+                                              .Where(_x => _x.Id == orderRemove.IdProduct).ToList();
+                        foreach (var productr in product)
+                        {
+                            productr.Stock = productr.Stock + orderRemove.Amount;
+                            _context.Update(Updateproduct(productr));
+                        }
+
+                        _context.Remove(GetOrder(orderRemove.Id));
+                    }
+                    _context.SaveChanges();
+                    return true;
                 }
-                _context.SaveChanges();
-                return true;
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
                 return false;
             }
-
-
-            //var billnew = 0;
-            //var Bill = _context.Set<Bill>().AsQueryable()
-            //    .OrderByDescending(x => x.NumBill)
-            //                .Take(1).ToList();
-            //foreach (var bill in Bill)
-            //{
-            //    billnew = bill.NumBill;
-            //}
-            //return billnew;
-
-
-            //try
-            //{
-            //    _context.Remove(GetOrder(id));
-            //    _context.SaveChanges();
-            //    return true;
-            //}
-            //catch (Exception)
-            //{
-            //    return false;
-            //}
         }
-
     }
 }

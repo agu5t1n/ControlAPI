@@ -29,16 +29,10 @@ namespace ControlAPI.Repository.Data
                            .WithMany(m => m.Product)
                            .HasForeignKey(v => v.IdCategory);
 
-
             modelBuilder.Entity<Order>()
                           .HasOne<Bill>(p => p.Bill)
                           .WithMany(m => m.Order)
                           .HasForeignKey(v => v.IdBill);
-
-            //modelBuilder.Entity<Order>()
-            //               .HasOne<Bill>(p => p.Bill)
-            //               .WithMany(m => m.Order)
-            //               .HasForeignKey(v => v.NumBill);
 
             modelBuilder.Entity<Order>()
                            .HasOne<Product>(p => p.Product)
@@ -51,9 +45,7 @@ namespace ControlAPI.Repository.Data
 
             if (!optionsBuilder.IsConfigured)
             {
-
                 optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS; Database=ControlDB; Integrated Security=True;");
-
             }
         }
     }

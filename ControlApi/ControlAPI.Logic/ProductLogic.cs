@@ -12,10 +12,18 @@ namespace ControlAPI.Logic
         {
             _productRepository = productRepository;
         }
-
         public Product GetProduct(string name)
         {
-            return _productRepository.FindByID(name/*, t => t.Category*/)[0];
+            try
+            {
+                return _productRepository.FindByID(name)[0];
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+           
         }
         public int GetStock()
         {
@@ -29,8 +37,6 @@ namespace ControlAPI.Logic
         {
             return _productRepository.StockByCategory(name);
         }
-
-
         public void Save(Product product)
         {
             _productRepository.Save(product);

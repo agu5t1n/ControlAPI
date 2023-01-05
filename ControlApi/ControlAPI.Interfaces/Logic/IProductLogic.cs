@@ -10,7 +10,6 @@ namespace ControlAPI.Interfaces.Logic
     public interface IProductLogic
     {
         Product GetProduct(string name);
-
         int GetStock();
         List<Product> GetByCategory(string name);
         int StockByCategory(string name);

@@ -12,13 +12,8 @@ namespace ControlAPI.Interfaces.Repository
     {
         Order GetOrder(int numbill);
         List<Order> FindByID(int name, params Expression<Func<Order, object>>[] includes);
-        //List<Product> GetByCategory(string name, params Expression<Func<Product, object>>[] includes);
-
         void Save(Order order);
         void Update(Order order);
         bool Delete(int id);
-
-
-
     }
 }

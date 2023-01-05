@@ -15,10 +15,7 @@ namespace ControlAPI.Interfaces.Repository
         List<Product> FindByID(string name, params Expression<Func<Product, object>>[] includes);
         List<Product> GetByCategory(string name, params Expression<Func<Product, object>>[] includes);
         int StockByCategory(string name);
-
         void Save(Product product);
         void Update(Product product);
-
-
     }
 }

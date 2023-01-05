@@ -15,8 +15,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ControlDbContext>(
-    options => {
-        //options.UseSqlServer("ConnectionString");
+    options =>
+    {
         options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString"));
     });
 builder.Services.AddScoped<IProductLogic, ProductLogic>();
@@ -25,8 +25,10 @@ builder.Services.AddScoped<IBillLogic, BillLogic>();
 builder.Services.AddTransient<IBillRepository, BillRepository>();
 builder.Services.AddScoped<IOrderLogic, OrderLogic>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
-//builder.Services.AddScoped<IProductRepository, ProductRepository>();
-//builder.Services.AddTransient<IProductRepository, ProductRepository>();
+
+builder.Services.AddScoped<ICategoryLogic, CategoryLogic>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+
 builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 
@@ -36,7 +38,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

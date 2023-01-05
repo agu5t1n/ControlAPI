@@ -32,16 +32,6 @@ namespace ControlApi.Controllers
 
             return OrderDTORs;
         }
-        //[HttpGet()]
-        //[Route("GetByCategory")]
-        //public ActionResult<List<BillDTORs>> GetByCategory(string name)
-        //{
-        //    var product = _billLogic.(name);
-        //    var productDTORs = _mapper.Map<List<BillDTORs>>(product);
-
-        //    return productDTORs;
-        //}
-
         [HttpPost]
         public ActionResult Save(OrderDTO orderDTO)
         {
@@ -54,7 +44,7 @@ namespace ControlApi.Controllers
         [Route("Update")]
         public ActionResult Update(int id, OrderDTO orderDTO)
         {
-            
+
             var order = _mapper.Map<Order>(orderDTO);
             order.Id = id;
             _orderLogic.Update(order);
@@ -63,10 +53,10 @@ namespace ControlApi.Controllers
         }
         [HttpDelete]
         [Route("Delete")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int numbill)
         {
-            bool confirmation = _orderLogic.Delete(id);
-            bool confirmation2 = _billLogic.Delete(id);
+            bool confirmation = _orderLogic.Delete(numbill);
+            bool confirmation2 = _billLogic.Delete(numbill);
 
             return Ok(confirmation);
         }

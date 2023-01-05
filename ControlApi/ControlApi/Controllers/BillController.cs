@@ -24,17 +24,28 @@ namespace ControlApi.Controllers
         }
         [HttpGet()]
         [Route("ID")]
-        public ActionResult<BillDTORs> GetId(int numbill)
+        public ActionResult<BillDTORs> GetBill(int numbill)
         {
-            var bill = _billLogic.GetProduct(numbill);
+            var bill = _billLogic.GetBill(numbill);
             var billDTORs = _mapper.Map<BillDTORs>(bill);
 
             return billDTORs;
+        }
+
+        [HttpGet()]
+        [Route("Bill")]
+        public ActionResult<Bill> FindBynumbill()
+        {
+            var bill = _billLogic.FindNumBill();
+
+
+            return bill;
         }
         [HttpGet()]
         [Route("FindByDate")]
         public ActionResult<List<BillDTORs>> FindByDate(DateTime Datetime)
         {
+            //var data= DateTime.Parse(Datetime);
             var bill = _billLogic.FindByDate(Datetime);
             var billDTORs = _mapper.Map<List<BillDTORs>>(bill);
 
@@ -45,33 +56,15 @@ namespace ControlApi.Controllers
         public ActionResult<double> TotalByDate(DateTime Datetime)
         {
             var total = _billLogic.TotalByDate(Datetime);
-           
+
 
             return total;
         }
-        //[HttpGet()]
-        //[Route("GetByCategory")]
-        //public ActionResult<List<BillDTORs>> GetByCategory(string name)
-        //{
-        //    var product = _billLogic.(name);
-        //    var productDTORs = _mapper.Map<List<BillDTORs>>(product);
-
-        //    return productDTORs;
-        //}
-        //[HttpGet()]
-        //[Route("numbill")]
-        //public ActionResult<BillDTORs> GetNumbill()
-        //{
-        //    var bill = _billLogic.FindNumBill();
-        //    var billDTORs = _mapper.Map<BillDTORs>(bill);
-
-        //    return billDTORs;
-        //}
         [HttpPost]
         public ActionResult Save(BillDTO billDTO)
         {
             var bill = _mapper.Map<Bill>(billDTO);
-           
+
             _billLogic.Save(bill);
 
             return Ok(bill);
@@ -88,9 +81,9 @@ namespace ControlApi.Controllers
         }
         [HttpDelete]
         [Route("Delete")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int numbill)
         {
-            bool confirmation = _billLogic.Delete(id);
+            bool confirmation = _billLogic.Delete(numbill);
 
             return Ok(confirmation);
         }

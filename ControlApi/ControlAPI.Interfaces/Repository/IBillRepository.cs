@@ -10,17 +10,13 @@ namespace ControlAPI.Interfaces.Repository
 {
     public interface IBillRepository
     {
-        Bill GetProduct(int numbill);
-        int FindNumBill(); 
+        Bill GetBill(int numbill);
+        Bill FindNumBill();
         double TotalByDate(DateTime dateTime);
         List<Bill> FindByID(int numbill, params Expression<Func<Bill, object>>[] includes);
         List<Bill> FindByDate(DateTime Datetime, params Expression<Func<Bill, object>>[] includes);
-        //List<Bill> GetByCategory(int numbill, params Expression<Func<Bill, object>>[] includes);
-
         void Save(Bill bill);
         void Update(Bill bill);
-
         bool Delete(int id);
-
     }
 }

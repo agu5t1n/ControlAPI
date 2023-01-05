@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace ControlAPI.Interfaces.Logic
 {
-    public interface IOrderLogic
+    public interface ICategoryLogic
     {
-        Order GetOrder(int numbill);
-        void Save(Order order);
-        void Update(Order order);
-        bool Delete (int id);
+        List<Category> GetCategories();
+        void Save(Category category);
     }
 }

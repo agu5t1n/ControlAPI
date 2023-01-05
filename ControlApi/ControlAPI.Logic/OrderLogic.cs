@@ -13,21 +13,15 @@ namespace ControlAPI.Logic
         {
             _orderRepository = orderRepository;
         }
-
         public Order GetOrder(int numbill)
         {
-            return _orderRepository.FindByID(numbill/*, t => t.Category*/)[0];
+            return _orderRepository.FindByID(numbill)[0];
         }
-        //public List<Product> GetByCategory(string name)
-        //{
-        //    return _orderRepository.GetByCategory(name);
-        //}
-      
-
         public void Save(Order order)
         {
             _orderRepository.Save(order);
-        }public void Update(Order order)
+        }
+        public void Update(Order order)
         {
             _orderRepository.Update(order);
         }

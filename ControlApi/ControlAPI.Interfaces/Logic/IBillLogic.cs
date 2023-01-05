@@ -9,11 +9,10 @@ namespace ControlAPI.Interfaces.Logic
 {
     public interface IBillLogic
     {
-        Bill GetProduct(int numbull);
-        int FindNumBill();
+        Bill GetBill(int numbull);
+        Bill FindNumBill();
         double TotalByDate(DateTime dateTime);
         List<Bill> FindByDate(DateTime Datetime);
-
         void Save(Bill bill);
         void Update(Bill bill);
         bool Delete(int id);

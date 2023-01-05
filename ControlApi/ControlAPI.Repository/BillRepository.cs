@@ -21,20 +21,16 @@ namespace ControlAPI.Repository
                             .Where(x => x.Id == numbill)
                             .Include(s => s.Order)
                             .ToList();
-
             return Bill;
-
         }
         public List<Bill> FindByDate(DateTime Datetime, params Expression<Func<Bill, object>>[] includes)
         {
-            var Datenow= DateTime.Now;
+            var Datenow = DateTime.Now;
             var Bill = _context.Set<Bill>().AsQueryable()
-                            .Where(x => x.Date == Datetime && x.Date <=Datenow) 
+                            .Where(x => x.Date == Datetime && x.Date <= Datenow)
                             .Include(s => s.Order)
                             .ToList();
-
             return Bill;
-
         }
         public double TotalByDate(DateTime Datetime)
         {
@@ -44,45 +40,24 @@ namespace ControlAPI.Repository
             {
                 Total += i.Total;
             }
-
             return Total;
-
         }
 
-        public int FindNumBill()
+        public Bill FindNumBill()
         {
-            var billnew = 0;
+            var billnew = new Bill();
             var Bill = _context.Set<Bill>().AsQueryable()
                             .OrderByDescending(x => x.NumBill)
                             .Take(1).ToList();
             foreach (var bill in Bill)
             {
-                billnew = bill.NumBill;
+                billnew.Id = bill.Id + 1;
+                billnew.NumBill = bill.NumBill + 1;
             }
             return billnew;
 
         }
-
-
-        //var lastRecord = objContext.ResetPassword
-        //                   .Where(x
-        //                         => x.Email == email
-        //                         && x.Status == 0)
-        //                     .OrderByDescending(x => x.Id)
-        //                     .Take(1);
-
-
-
-        //public List<Product> GetByCategory(string name, params Expression<Func<Product, object>>[] includes)
-        //{
-        //    var ID = _context.Set<Product>().AsQueryable()
-        //                .Where(x => x.Category.Type == name)
-        //                .Include(t => t.Category).ToList();
-        //    return ID.ToList();
-
-        //}
-
-        public Bill GetProduct(int numbill)
+        public Bill GetBill(int numbill)
         {
             Bill bill = _context.Bill.Find(numbill);
             return bill;
@@ -90,11 +65,8 @@ namespace ControlAPI.Repository
         public void Save(Bill bill)
         {
             var billnew = FindNumBill();
-            bill.Client = "NA";
-            bill.DocumentClient = "NA";
-            bill.NumBill = billnew + 1;
-           
             var datenow = DateTime.Now.ToString("yyyy-MM-dd");
+            bill.NumBill = billnew.NumBill;
             bill.Date = Convert.ToDateTime(datenow);
             _context.Add(bill);
             _context.SaveChanges();
@@ -111,20 +83,26 @@ namespace ControlAPI.Repository
             try
             {
                 var billCorrect = _context.Set<Bill>().AsQueryable()
-                   .Where(_x => _x.NumBill == numbill)
-               .ToList();
-                foreach (var billremove in billCorrect)
+                            .Where(_x => _x.NumBill == numbill)
+                            .ToList();
+                if (billCorrect.Count != 0)
                 {
-                    _context.Remove(GetProduct(billremove.Id));
+                    foreach (var billremove in billCorrect)
+                    {
+                        _context.Remove(GetBill(billremove.Id));
+                    }
+                    _context.SaveChanges();
+                    return true;
                 }
-                _context.SaveChanges();
-                return true;
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
                 return false;
             }
         }
-
     }
 }
